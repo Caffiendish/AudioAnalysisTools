@@ -1,33 +1,13 @@
-<br/>
-<p align="center">
-  <a href="https://github.com/gtreshchev/audioanalysistools">
-    <img src="Resources/Icon128.png" alt="Logo" width="80" height="80">
-  </a>
+This is a dump of a WIP runtime usable Synesthesia plugin.
 
-<h3 align="center">Audio Analysis Tools</h3>
+It's the absolute start of one, but what I'd recommend to anyone who continues to work on this, 
+is to inherit the basic Synesthesia classes, like UOnsetNRT, and override all the functions that call GetResult.
 
-  <p align="center">
-    Real-time audio data analysis<br>Works in conjunction with the <a href="https://github.com/gtreshchev/runtimeaudioimporter">Runtime Audio Importer</a> plugin
-    <br/>
-    <br/>
-    <a href="https://github.com/gtreshchev/AudioAnalysisTools/wiki/"><strong>Explore the docs »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://unrealengine.com/marketplace/product/audio-analysis-tools">Marketplace</a>
-    .
-    <a href="https://github.com/gtreshchev/audioanalysistools/releases">Releases</a>
-    .
-    <a href="https://t.me/georgydev">Support Chat</a>
-  </p>
+There's no reason to do FFT calculations every function call, when we could "bake" on import/request, and then just return that data.
 
-## Features
-
-- Beat Detection
-- Onset Detection
-- Core Time Domain Features
-- Core Frequency Domain Features
-- No any static libraries and external dependencies
-- Support for all available devices (Android, iOS, Windows, Mac, Linux, etc)
+I'd also say to inherit UAudioComponent, make your own component, and override the "Get FFT" functions, take the basic Synesthesia classes as data,
+and then use either custom or default Synesthesia functions to provide data in a manner akin to the current FFT functions,
+which, if they actually worked, would be incredibly helpful, since you can just call that on the tick.
 
 ## Legal info
 
